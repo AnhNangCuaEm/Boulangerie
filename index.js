@@ -116,6 +116,11 @@ document.addEventListener('DOMContentLoaded', function () {
    navLinks.classList.remove('hidden');
 
    mobileMenuButton.addEventListener('click', function () {
+      // Toggle hamburger animation class
+      requestAnimationFrame(() => {
+         mobileMenuButton.classList.toggle('hamburger-active');
+      });
+      
       if (navLinks.classList.contains('translate-x-full')) {
          // Show menu
          navLinks.classList.remove('translate-x-full');

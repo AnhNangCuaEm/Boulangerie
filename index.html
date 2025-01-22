@@ -13,7 +13,9 @@
    <!-- Add these Google Fonts -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=M+PLUS+1p:wght@300;400;500&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400;500&family=Zen+Old+Mincho:wght@400;500&display=swap" rel="stylesheet">
+   <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=M+PLUS+1p:wght@300;400;500&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400;500&family=Zen+Old+Mincho:wght@400;500&display=swap"
+      rel="stylesheet">
 
    <style>
       /* Option 1: Modern Japanese */
@@ -21,7 +23,10 @@
          font-family: 'Zen Kaku Gothic New', sans-serif;
          scroll-behavior: smooth !important;
       }
-      h1, h2, h3 {
+
+      h1,
+      h2,
+      h3 {
          font-family: 'Zen Old Mincho', serif;
       }
 
@@ -34,6 +39,72 @@
 
       #view-all-btn {
          cursor: pointer;
+      }
+
+      /* Hamburger Menu Styles */
+      .hamburger-box {
+         width: 32px;
+         height: 24px;
+         position: relative;
+         margin: auto;
+      }
+
+      .hamburger-inner {
+         width: 32px;
+         height: 3px;
+         background-color: #231815;
+         position: absolute;
+         transition-property: transform;
+         transition-duration: 0.22s;
+         transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+         top: 50%;
+         margin-top: -2px;
+      }
+
+      .hamburger-inner::before,
+      .hamburger-inner::after {
+         content: "";
+         display: block;
+         width: 32px;
+         height: 3px;
+         background-color: #231815;
+         position: absolute;
+         transition-property: transform;
+         transition-duration: 0.15s;
+         transition-timing-function: ease;
+      }
+
+      .hamburger-inner::before {
+         top: -10px;
+         transition: top 0.1s 0.25s ease-in,
+            opacity 0.1s ease-in;
+      }
+
+      .hamburger-inner::after {
+         bottom: -10px;
+         transition: bottom 0.1s 0.25s ease-in,
+            transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+      }
+
+      /* Animation khi active */
+      .hamburger-active .hamburger-inner {
+         transform: rotate(225deg);
+         transition-delay: 0.12s;
+         transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+
+      .hamburger-active .hamburger-inner::before {
+         top: 0;
+         opacity: 0;
+         transition: top 0.1s ease-out,
+            opacity 0.1s 0.12s ease-out;
+      }
+
+      .hamburger-active .hamburger-inner::after {
+         bottom: 0;
+         transform: rotate(-90deg);
+         transition: bottom 0.1s ease-out,
+            transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
       }
 
       @media (max-width: 768px) {
@@ -165,11 +236,10 @@
             </svg>
 
             <!-- Hamburger Menu Button (visible only on mobile) -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-800">
-               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                  </path>
-               </svg>
+            <button id="mobile-menu-button" class="md:hidden text-gray-800 relative w-8 h-8">
+               <div class="hamburger-box">
+                  <div class="hamburger-inner"></div>
+               </div>
             </button>
 
             <!-- Navigation Links (hidden on mobile by default) -->
